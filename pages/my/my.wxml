@@ -1,0 +1,68 @@
+
+
+<view class="container my-container">
+
+<!--头像-->
+  <view class='my-header'>
+    <button class='login' bindgetuserinfo='openSetting' open-type="getUserInfo" hidden='{{userInfo}}'>登录</button>
+    <image src='{{userInfo.avatarUrl}}'></image>
+    <text class='name'>{{userInfo.nickName}}</text>
+  </view>
+
+  <!--地址管理-->
+   <view class='my-address'>
+     <block wx:if="{{addressInfo}}">
+      <view class='item-title' ontap="editAddress">
+        地址管理<image src='../../images/icon/arrow@right.png'></image>
+      </view>
+      <view class='item-main'>
+        <view class='section'>
+          <input name="name" placeholder='姓名' value='{{addressInfo.name}}' disabled></input>
+        </view>
+        <view class='section'>
+          <input name="number" type='mobile' placeholder='手机号码' value='{{addressInfo.mobile}}' disabled></input>
+        </view>
+        <view class='section'>
+          <input name="detail" placeholder='收货地址' value='{{addressInfo.detail}}' disabled></input>
+        </view>
+      </view>
+      </block>
+      <block wx:else>
+        <view class='add-new-address' ontap="editAddress">
+          <text class='icon'>+</text>
+          <text>添加地址</text>
+        </view>
+      </block>
+   </view>
+
+   <view class='my-order'>
+    <view class='item-title'>我的订单</view>
+
+    <view class='item-main'>
+      <view class='order-item' bindtap="JumpOrderDetail">
+        <view class='order-header'>
+          <text>订单编号:</text>
+          <text class='order-no-txt'></text>
+        </view>
+        <view class='order-main'>
+          <view class='item-left'>
+            <image src=''></image>
+          </view>
+          <view class='item-middle'>
+            <view></view>
+            <view>件商品</view>
+          </view>
+          <view class='item-right'>
+            <text class='order-status-txt unpay'>待付款</text>
+          </view>
+        </view>
+        
+        <view class='order-bottom'>
+          <text>实付:￥111</text>
+          <view class='pay' bindtap="repay">付款</view>
+        </view>
+      </view>
+    </view>
+   </view>
+
+</view>
